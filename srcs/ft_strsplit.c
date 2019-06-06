@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 09:42:32 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/01 20:35:39 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/06 16:02:16 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,15 @@ static char		*ft_cutword(char const *s, char c, size_t i)
 static void		ft_putnull(char **res, int cnt)
 {
 	if (cnt > 1)
+	{
+		free(res[cnt - 1]);
 		res[cnt - 1] = NULL;
+	}
 	else
+	{
+		free(res[cnt]);
 		res[cnt] = NULL;
+	}
 }
 
 char			**ft_strsplit(char const *s, char c)
@@ -79,7 +85,7 @@ char			**ft_strsplit(char const *s, char c)
 		i = 0;
 		cnt = 0;
 		words = ft_countwords(s, c);
-		res = (char **)malloc(sizeof(char **) * (words + 1));
+		res = (char **)malloc(sizeof(char **) * (words - 1));
 		if (res == NULL)
 			return (NULL);
 		while (words-- > 1)
