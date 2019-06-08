@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 09:42:32 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/06 16:02:16 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/08 20:41:41 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 static int		ft_countwords(char const *s, char c)
 {
-	int		cnt;
-	int		i;
-	int		f;
+	int			cnt;
+	const char	*l_comma;
+	const char	*tmp;
+	int			f;
 
+	tmp = s;
+	l_comma = 0;
 	cnt = 0;
-	i = 0;
 	f = 0;
-	while (s[i])
+	while (*tmp)
 	{
-		if (f == 1 && s[i] == c)
-			f = 0;
-		if (f == 0 && s[i] != c)
+		if (*tmp == c && f == 0)
 		{
-			f = 1;
 			cnt++;
+			f = 1;
+			l_comma = tmp;
 		}
-		i++;
+		else if (*tmp != c && f == 1)
+			f = 0;
+		tmp++;
 	}
-	if (cnt == 0)
-		return (cnt);
-	else
-		return (cnt + 2);
+	cnt += l_comma < (s + ft_strlen(s) - 1);
+	cnt++;
+	return (cnt);
 }
 
 static char		*ft_cutword(char const *s, char c, size_t i)
@@ -46,12 +48,12 @@ static char		*ft_cutword(char const *s, char c, size_t i)
 
 	l = 0;
 	end = i + 1;
-	while (s[end] != c)
+	while (s[end] && s[end] != c)
 		end++;
 	word = (char *)ft_strnew(end - i);
 	if (word == NULL)
 		return (NULL);
-	while (i < end)
+	while (s[i] && i < end)
 	{
 		word[l++] = s[i];
 		i++;
@@ -85,10 +87,10 @@ char			**ft_strsplit(char const *s, char c)
 		i = 0;
 		cnt = 0;
 		words = ft_countwords(s, c);
-		res = (char **)malloc(sizeof(char **) * (words - 1));
+		res = (char **)ft_memalloc(sizeof(char **) * words);
 		if (res == NULL)
 			return (NULL);
-		while (words-- > 1)
+		while (words-- > 0)
 		{
 			while (s[i] && s[i] == c)
 				i++;
