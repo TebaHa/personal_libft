@@ -93,4 +93,8 @@ int					ft_islower(int c);
 int					get_next_line(const int fd, char **line);
 char				*ft_getline(char *str[30], int fd, int f[1]);
 
+int					ft_atoi_hex(char *str);
+char				**ft_strsplitwhitespaces(char const *s);
+int					ft_strwcmp(const char *s1, const char *s2);
+
 #endif

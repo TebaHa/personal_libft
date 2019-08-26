@@ -6,7 +6,7 @@
 #    By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 20:34:56 by zytrams           #+#    #+#              #
-#    Updated: 2019/05/04 22:07:21 by zytrams          ###   ########.fr        #
+#    Updated: 2019/08/26 20:24:27 by zytrams          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS_LIST = ft_toupper.c ft_tolower.c ft_strstr.c ft_strrchr.c ft_strnstr.c ft_s
 	ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c \
 	ft_strsplit.c ft_itoa.c ft_itoa_base.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putendl.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putnbr_fd.c ft_putendl_fd.c ft_lstnew.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstdel.c ft_lstadd.c ft_isblank.c \
-	ft_isspace.c ft_strcapitalize.c ft_islower.c get_next_line.c
+	ft_isspace.c ft_strcapitalize.c ft_islower.c get_next_line.c ft_atoi_hex.c ft_strsplitwhitespaces.c ft_strwcmp.c
 
 SRCS = $(addprefix $(SRCS_DIRECTORY), $(SRCS_LIST))
 
@@ -44,7 +44,7 @@ $(NAME): $(OBJS_DIRECTORY) $(OBJS)
 
 $(OBJS_DIRECTORY):
 	@mkdir -p $(OBJS_DIRECTORY)
-	@echo "$(NAME): $(OBJS_DIRECTORY) was created"
+	@echo $(NAME): $(OBJS_DIRECTORY) was created
 
 $(OBJS_DIRECTORY)%.o: $(SRCS_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
