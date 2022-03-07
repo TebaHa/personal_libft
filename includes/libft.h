@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:01:10 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/04 22:06:30 by zytrams          ###   ########.fr       */
+/*   Updated: 2020/11/05 16:43:05 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+typedef enum		e_bool
+{
+	TRUE,
+	FALSE
+}					t_bool;
 
 typedef struct		s_list
 {
